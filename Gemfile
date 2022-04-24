@@ -9,3 +9,5 @@ gem 'timetree'
 gem 'faraday'
 
 gem 'dotenv'
+
+gem 'line-bot-api'

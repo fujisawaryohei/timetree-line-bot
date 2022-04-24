@@ -1,7 +1,6 @@
 class TimetreeClient
 
   BASE_URL = 'https://timetreeapis.com'
-  ACCESS_TOKEN = ENV['ACCESS_TOKEN']
 
   def initialize
     @response = nil
@@ -10,7 +9,7 @@ class TimetreeClient
   def get(url, query={})
     @response = connection.get url do |request|
       request.headers["Accept"] = 'application/vnd.timetree.v1+json'
-      request.headers["Authorization"] = 'Bearer ' + ENV['ACCESS_TOKEN']
+      request.headers["Authorization"] = 'Bearer ' + ENV['TIME_TREE_ACCESS_TOKEN']
       
       unless query.empty?
         query.each{|key, value| request.params[key.to_sym] = value }
@@ -22,7 +21,7 @@ class TimetreeClient
   def post(url)
     @response = connection.post url do |request|
       request.headers["Accept"] = 'application/vnd.timetree.v1+json'
-      request.headers["Authorization"] = 'Bearer ' + ENV['ACCESS_TOKEN']
+      request.headers["Authorization"] = 'Bearer ' + ENV['TIME_TREE_ACCESS_TOKEN']
     end
     JSON.parse(@response.body)
   end

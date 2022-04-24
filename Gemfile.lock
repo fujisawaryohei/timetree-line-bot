@@ -28,6 +28,7 @@ GEM
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
     jwt (2.3.0)
+    line-bot-api (1.23.0)
     multipart-post (2.1.1)
     ruby2_keywords (0.0.5)
     timetree (1.0.0)
@@ -41,6 +42,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   faraday
+  line-bot-api
   timetree
 
 BUNDLED WITH
