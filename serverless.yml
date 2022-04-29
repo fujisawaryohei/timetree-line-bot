@@ -8,7 +8,7 @@ provider:
 
 functions:
   webhook:
-    handler: handler.webhook
+    handler: handler.event_notification
     # 今回はLambda Endpointを使うためAPIGatewayは無効化
     url: true
     # events:

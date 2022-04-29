@@ -1,26 +1,24 @@
 class LineClient
 
-  attr_accessor :event, :message
+  attr_accessor :messages
 
-  def initialize(event=nil, message={})
-    @event = event
-    @message = message
+  def initialize(messages)
+    @messages = messages
   end
 
-  def reply
-    event = JSON.parse(event["body"])
-    reply_token = event["events"][0]["replyToken"]
+  def notificate_event
     message = {
       type: 'text',
-      text: message
+      text: messages.join("\n\n")
     }
-    client.reply_message(reply_token, message)
+    client.broadcast(message)
   end
 
   private
 
   def client
     client ||= Line::Bot::Client.new { |config|
+      config.channel_id = ENV['LINE_CHANNEL_ID']
       config.channel_secret = ENV['LINE_CHANNEL_SECRET']
       config.channel_token = ENV['LINE_CHANNEL_TOKEN']
     }
